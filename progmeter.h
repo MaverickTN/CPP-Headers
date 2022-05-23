@@ -1,5 +1,6 @@
-// progMeter.h : Displays progress when executing functions.
+// progmeter.h : Displays progress when executing functions.
 // By: Adam Bailey
+// eMail: abailey7@my.keller.edu
 
 #pragma once
 #include <iostream>
@@ -12,19 +13,22 @@ namespace std
 {
 	class progMeter
 	{
-	private:
-		int items;
-		double progress;
-		int length;
 	public:
-		progMeter(int a, double b, int c) {
+		int items;
+		int	progress;
+		int length;
+
+		progMeter(int a, int b, int c) {
 			items = a;
 			progress = b;
 			length = c;
 		}
 	
 		void showProgress(double progress) {
-			double percentage = (progress/items);
+			if (items = 0) {
+				items = 1;
+			}
+			double percentage = (progress / items);
 			cout << "Progress:" << "(" << progress << "/" << items << ") [";
 			for (double i = 0;i <= length; ++i) {
 				if (i <= (percentage * length)) {
@@ -39,7 +43,9 @@ namespace std
 					cout << " ";
 				}
 			}
-			cout << "]" << (percentage * 100) << "% \r";
+			if (percentage <= 1) {
+				cout << "]" << (percentage * 100) << "% \r";
+			}
 			cout.flush();
 		}
 	};
