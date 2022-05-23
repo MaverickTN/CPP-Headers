@@ -15,7 +15,7 @@ namespace std
 	{
 	public:
 		int items;
-		int	progress;
+		int progress;
 		int length;
 
 		progMeter(int a, int b, int c) {
