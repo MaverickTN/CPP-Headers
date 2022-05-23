@@ -25,10 +25,12 @@ namespace std
 		}
 	
 		void showProgress(double progress) {
-			if (items = 0) {
-				items = 1;
-			}
+			
 			double percentage = (progress / items);
+			if (items <= 0) {
+				percentage = 1;
+			}
+
 			cout << "Progress:" << "(" << progress << "/" << items << ") [";
 			for (double i = 0;i <= length; ++i) {
 				if (i <= (percentage * length)) {
