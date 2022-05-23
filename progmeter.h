@@ -28,26 +28,26 @@ namespace std
 			
 			double percentage = (progress / items);
 			if (items <= 0) {
-				percentage = 1;
+				percentage = 1.0;
 			}
-
-			cout << "Progress:" << "(" << progress << "/" << items << ") [";
-			for (double i = 0;i <= length; ++i) {
-				if (i <= (percentage * length)) {
-					if (OS_Windows) {
-						cout << "#";
+			
+			if (percentage <= 1) {
+				cout << "Progress:" << "(" << progress << "/" << items << ") [";
+				for (double i = 0;i <= length; ++i) {
+					if (i <= (percentage * length)) {
+						if (OS_Windows) {
+							cout << "#";
+						}
+						else {
+							cout << "\u2588";
+						}
 					}
 					else {
-						cout << "\u2588";
+						cout << " ";
 					}
 				}
-				else {
-					cout << " ";
+					cout << "]" << (percentage * 100) << "% \r";
 				}
-			}
-			if (percentage <= 1) {
-				cout << "]" << (percentage * 100) << "% \r";
-			}
 			cout.flush();
 		}
 	};
