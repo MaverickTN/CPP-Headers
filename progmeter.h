@@ -40,10 +40,10 @@ namespace std
 				for (int i = 0;i <= length; ++i) {
 					if (i <= (percentage * length)) {
 						if (OS_Windows) {
-							cout << "#";
+							cout << "#"; //Progress Output for Windows Shell
 						}
 						else {
-							cout << "\u2588";
+							cout << "\u2588"; //Output for shell environments supporting UTF-8.
 						}
 					}
 					else {
