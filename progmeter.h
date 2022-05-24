@@ -4,6 +4,7 @@
 
 #pragma once
 #include <iostream>
+#include <iomanip>
 #ifndef _WIN32_
 #define OS_Windows 1
 #endif
@@ -15,7 +16,7 @@ namespace std
 	{
 	public:
 		int items;
-		int progress;
+		int	progress;
 		int length;
 
 		progMeter(int a, int b, int c) {
@@ -24,16 +25,19 @@ namespace std
 			length = c;
 		}
 	
-		void showProgress(double progress) {
+		void showProgress(int progress) {
 			
 			double percentage = (progress / items);
 			if (items <= 0) {
-				percentage = 1.0;
+				percentage = 1;
+			}
+			else {
+				percentage = (progress / items);
 			}
 			
 			if (percentage <= 1) {
 				cout << "Progress:" << "(" << progress << "/" << items << ") [";
-				for (double i = 0;i <= length; ++i) {
+				for (int i = 0;i <= length; ++i) {
 					if (i <= (percentage * length)) {
 						if (OS_Windows) {
 							cout << "#";
@@ -46,7 +50,7 @@ namespace std
 						cout << " ";
 					}
 				}
-					cout << "]" << (percentage * 100) << "% \r";
+					cout << "]" << fixed << setprecision(2) << (percentage * 100) << "% \r";
 				}
 			cout.flush();
 		}
